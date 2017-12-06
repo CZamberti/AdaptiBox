@@ -14,10 +14,10 @@ const int JoyX = 0; //pin analogico del joystick per il movimento in verticale, 
 const int JoyY = 1; //pin analogico del joystick per il movimento in orizzontale, su A1
 
 //definizione costanti per i tasti direzionali
-const int upButton = 9; //tasto freccia su
-const int downButton = 10; //tasto freccia giù
-const int leftButton = 11; //tasto freccia sinistra
-const int rightButton = 12; //tasto freccia destra
+const int TastoSu = 9; //tasto freccia su
+const int TastoGiu = 10; //tasto freccia giù
+const int TastoSN = 11; //tasto freccia sinistra
+const int TastoDX = 12; //tasto freccia destra
 
 //setup
 void setup() {
@@ -36,10 +36,11 @@ void setup() {
   Mouse.begin(); //inizializzazione del mouse
   
   //tastiera
-  pinMode(upButton, INPUT); 
-  pinMode(downButton, INPUT);
-  pinMode(leftButton, INPUT);
-  pinMode(rightButton, INPUT);
+  pinMode(TastoSu, INPUT); 
+  pinMode(TastoGiu, INPUT);
+  pinMode(TastoSN, INPUT);
+  pinMode(TastoDX, INPUT);
+    
        
 }
 
