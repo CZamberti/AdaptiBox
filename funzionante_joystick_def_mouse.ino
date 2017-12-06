@@ -4,11 +4,11 @@
 //definzione costanti per O/I dispositivo
 const int LedON = 4; //pin dell'indicatore led
 const int BottoneStato = 5; //pin dello switch per l'accensione/spegnimento del dispositivo
-const int BloccaTasti = 6; //pin dello switch per l'accensione/spegnimento del dispositivo
+const int BloccaTasti = 6; //pin dello switch per tenere premuto il pulsante del mouse quando è attivo
 
 //definizione costanti per la simulazione del mouse (2 click+movimento)
-const int ClickSN = 2; 
-const int ClickDX = 3; //pin del pulsante che simula il tasto sinistro del mouse
+const int ClickSN = 2; //pin del pulsante che simula il tasto sinistro del mouse
+const int ClickDX = 3; //pin del pulsante che simula il tasto destro del mouse
 const int TieniPremuto=6;
 const int JoyX = 0; //pin analogico del joystick per il movimento in verticale, su A0
 const int JoyY = 1; //pin analogico del joystick per il movimento in orizzontale, su A1
@@ -91,14 +91,14 @@ int readJoystick(int axis){
 
 //This function reads when a button is clicked
 void GestioneClickMouse(int pin, char comando){
-  if (digitalRead(pin) == LOW){                             //If the button is pressed, and
-    if (!Mouse.isPressed(comando)){                   //if the button wasn't already clicked,
-      Mouse.press(comando);                           //click the mouse.
+  if (digitalRead(pin) == LOW){ //Se i pulsanti sono nello stato di LOW (non premuti)
+    if (!Mouse.isPressed(comando)){ //se i pulsanti (simulazione mouse) non sono premuti
+      Mouse.press(comando); //esegui il click
     }
   }
-  else if(!digitalRead(TieniPremuto) == HIGH){                                                     //Otherwise,
-    if (Mouse.isPressed(comando)){                    //if the button is pressed,
-      Mouse.release(comando);                         //release the click.
+  else if(!digitalRead(TieniPremuto) == HIGH){ //se lo switch per tenere lo stato dei tasti attivo non è su HIGH (non premuto)
+    if (Mouse.isPressed(comando)){  //se i pulsanti sono premuti
+      Mouse.release(comando); //rilascia il click
     }
   }
 }
