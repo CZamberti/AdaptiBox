@@ -2,22 +2,21 @@
 #include <Keyboard.h> //per la tastiera
 
 //definzione costanti per O/I dispositivo
-const int LedON = 4; //pin dell'indicatore led
-const int BottoneStato = 5; //pin dello switch per l'accensione/spegnimento del dispositivo
-const int BloccaTasti = 6; //pin dello switch per tenere premuto il pulsante del mouse quando è attivo
+const int LedON = 10; //pin dell'indicatore led
+const int BottoneStato = 9; //pin dello switch per l'accensione/spegnimento del dispositivo 
 
 //definizione costanti per la simulazione del mouse (2 click+movimento)
-const int ClickSN = 2; //pin del pulsante che simula il tasto sinistro del mouse
-const int ClickDX = 3; //pin del pulsante che simula il tasto destro del mouse
-const int TieniPremuto=6;
+const int TieniPremuto=8; //pin dello switch per tenere premuto il pulsante del mouse quando è attivo
+const int ClickSN = 7; //pin del pulsante che simula il tasto sinistro del mouse
+const int ClickDX = 6; //pin del pulsante che simula il tasto destro del mouse
 const int JoyX = 0; //pin analogico del joystick per il movimento in verticale, su A0
 const int JoyY = 1; //pin analogico del joystick per il movimento in orizzontale, su A1
 
 //definizione costanti per i tasti direzionali
-const int TastoSu = 9; //tasto freccia su
-const int TastoGiu = 10; //tasto freccia giù
-const int TastoSN = 11; //tasto freccia sinistra
-const int TastoDX = 12; //tasto freccia destra
+const int TastoSu = 5; //tasto freccia su
+const int TastoGiu = 4; //tasto freccia giù
+const int TastoSN = 3; //tasto freccia sinistra
+const int TastoDX = 2; //tasto freccia destra
 
 //setup
 void setup() {
@@ -90,7 +89,7 @@ int readJoystick(int axis){
   }
 }
 
-//This function reads when a button is clicked
+//Funzione per vedere quando è cliccato un pulsante
 void GestioneClickMouse(int pin, char comando){
   if (digitalRead(pin) == LOW){ //Se i pulsanti sono nello stato di LOW (non premuti)
     if (!Mouse.isPressed(comando)){ //se i pulsanti (simulazione mouse) non sono premuti
